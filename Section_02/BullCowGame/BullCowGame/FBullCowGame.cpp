@@ -8,12 +8,11 @@
 
 #include "FBullCowGame.hpp"
 
+int FBullCowGame::GetCurrentTry() { return MyCurrentTry; }
+int FBullCowGame::GetMaxTries() { return MyMaxTries; }
+
 void FBullCowGame::Reset(){
     return;
-}
-
-int FBullCowGame::GetMaxTries() {
-    return 0;
 }
 
 bool FBullCowGame::IsGameWon() {
@@ -24,6 +23,3 @@ bool FBullCowGame::CheckGuessValidity(std::string Guess) {
     return true;
 }
 
-int FBullCowGame::GetCurrentTry() {
-    return 0;
-}
