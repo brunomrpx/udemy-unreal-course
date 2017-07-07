@@ -6,6 +6,7 @@
 //  Copyright © 2017 Bruno Mayer Paixão. All rights reserved.
 //
 #include <iostream>
+#include "FBullCowGame.hpp"
 
 void PrintIntro();
 void PlayGame();
@@ -29,6 +30,8 @@ int main() {
 }
 
 void PlayGame() {
+    FBullCowGame BCGame; // instantiate a new game
+    
     // loop for the number of turns asking for guesses
     constexpr int NUMBER_OF_TURNS = 5;
     std::string Guess;
