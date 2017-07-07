@@ -6,14 +6,11 @@
 //  Copyright © 2017 Bruno Mayer Paixão. All rights reserved.
 //
 #include <iostream>
-#include <string>
-
-using namespace std;
 
 void PrintIntro();
 void PlayGame();
-string GetGuess();
-void PrintGuess(string Guess);
+std::string GetGuess();
+void PrintGuess(std::string Guess);
 bool AskToPlayAgain();
 
 // the entry point of application
@@ -34,49 +31,49 @@ int main() {
 void PlayGame() {
     // loop for the number of turns asking for guesses
     constexpr int NUMBER_OF_TURNS = 5;
-    string Guess;
+    std::string Guess;
     
     for (int i = 0; i < NUMBER_OF_TURNS; i++) {
         Guess = GetGuess();
         PrintGuess(Guess);
-        cout << endl;
+        std::cout << std::endl;
     }
     
-    cout << endl;
+    std::cout << std::endl;
 }
 
 void PrintIntro() {
     // introduce the game
     constexpr int WORD_LENGTH = 5;
     
-    cout << "Welcome to Bulls and Cows, a fun word game.\n";
-    cout << "Can you guess the " << WORD_LENGTH <<  " letter isogram I'm thinking of?\n";
-    cout << endl;
+    std::cout << "Welcome to Bulls and Cows, a fun word game.\n";
+    std::cout << "Can you guess the " << WORD_LENGTH <<  " letter isogram I'm thinking of?\n";
+    std::cout << std::endl;
     
     return;
 }
 
-string GetGuess() {
-    string Guess = "";
+std::string GetGuess() {
+    std::string Guess = "";
     
     // get a guess from the player
-    cout << "Enter your guess: ";
-    getline(cin, Guess);
+    std::cout << "Enter your guess: ";
+    getline(std::cin, Guess);
     
     return Guess;
 }
 
-void PrintGuess(string Guess) {
-    cout << "Your guess was: " << Guess << endl;
+void PrintGuess(std::string Guess) {
+    std::cout << "Your guess was: " << Guess << std::endl;
     
     return;
 }
 
 bool AskToPlayAgain() {
-    cout << "Do yout want to play again? (y/n) ";
+    std::cout << "Do yout want to play again? (y/n) ";
     
-    string Response = "";
-    getline(cin, Response);
+    std::string Response = "";
+    getline(std::cin, Response);
     
     return tolower(Response[0]) == tolower('Y');
 }
