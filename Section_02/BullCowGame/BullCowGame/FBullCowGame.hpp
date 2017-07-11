@@ -18,6 +18,7 @@ public:
     
     void Reset(); // TODO make a more rich return value
     bool CheckGuessValidity(std::string); // TODO make a more rich return value
+    // provide a method for counting bulls & cows, and increaseing try number
     
 private:
     int MyCurrentTry;
