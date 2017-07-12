@@ -5,13 +5,21 @@
 //  Created by Bruno Mayer Paixão on 29/06/17.
 //  Copyright © 2017 Bruno Mayer Paixão. All rights reserved.
 //
+
+// This is the console executable, that makes use of the BullCow class.
+// This acts as the view in a MVC pattern and is responsible for all
+// user interaction. For game logic see the FBullCowGame class.
+
 #include <iostream>
 #include "FBullCowGame.hpp"
 
+using FText = std::string;
+using int32 = int;
+
 void PrintIntro();
 void PlayGame();
-std::string GetGuess();
-void PrintGuess(std::string Guess);
+FText GetGuess();
+void PrintGuess(FText Guess);
 bool AskToPlayAgain();
 
 FBullCowGame BCGame; // instantiate a new game
@@ -32,12 +40,12 @@ int main() {
 
 void PlayGame() {
     BCGame.Reset();
-    int MaxTries = BCGame.GetMaxTries();
+    int32 MaxTries = BCGame.GetMaxTries();
     
     // loop for the number of turns asking for guesses
-    std::string Guess;
+    FText Guess;
     // TODO change to WHILE llop once we are validating tries
-    for (int i = 0; i < MaxTries; i++) {
+    for (int32 i = 0; i < MaxTries; i++) {
         Guess = GetGuess(); // TODO make loop checking valid guesses
         
         // submit valid guess to the game
@@ -54,7 +62,7 @@ void PlayGame() {
 
 void PrintIntro() {
     // introduce the game
-    constexpr int WORD_LENGTH = 5;
+    constexpr int32 WORD_LENGTH = 5;
     
     std::cout << "Welcome to Bulls and Cows, a fun word game.\n";
     std::cout << "Can you guess the " << WORD_LENGTH <<  " letter isogram I'm thinking of?\n";
@@ -63,9 +71,9 @@ void PrintIntro() {
     return;
 }
 
-std::string GetGuess() {
-    std::string Guess = "";
-    int CurrentTry = BCGame.GetCurrentTry();
+FText GetGuess() {
+    FText Guess = "";
+    int32 CurrentTry = BCGame.GetCurrentTry();
     
     // get a guess from the player
     std::cout << "Try " << CurrentTry << ". Enter your guess: ";
@@ -74,7 +82,7 @@ std::string GetGuess() {
     return Guess;
 }
 
-void PrintGuess(std::string Guess) {
+void PrintGuess(FText Guess) {
     std::cout << "Your guess was: " << Guess << std::endl;
     
     return;
@@ -83,7 +91,7 @@ void PrintGuess(std::string Guess) {
 bool AskToPlayAgain() {
     std::cout << "Do yout want to play again? (y/n) ";
     
-    std::string Response = "";
+    FText Response = "";
     getline(std::cin, Response);
     
     return tolower(Response[0]) == tolower('Y');

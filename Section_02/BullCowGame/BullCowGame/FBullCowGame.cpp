@@ -8,15 +8,18 @@
 
 #include "FBullCowGame.hpp"
 
+using int32 = int;
+using FString = std::string;
+
 FBullCowGame::FBullCowGame() {
     Reset();
 }
 
-int FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
-int FBullCowGame::GetMaxTries() const { return MyMaxTries; }
+int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
+int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
 
 void FBullCowGame::Reset() {
-    constexpr int MAX_TRIES = 8;
+    constexpr int32 MAX_TRIES = 8;
     MyMaxTries = MAX_TRIES;
     
     MyCurrentTry = 1;
@@ -28,7 +31,7 @@ bool FBullCowGame::IsGameWon() const {
     return false;
 }
 
-bool FBullCowGame::CheckGuessValidity(std::string Guess) {
+bool FBullCowGame::CheckGuessValidity(FString Guess) {
     return true;
 }
 
