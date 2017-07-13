@@ -20,7 +20,7 @@ int32 FBullCowGame::GetMaxTries() const { return MyMaxTries; }
 
 void FBullCowGame::Reset() {
     constexpr int32 MAX_TRIES = 8;
-    const FString HIDDEN_WORD = "planet";
+    const FString HIDDEN_WORD = "ant";
     
     MyMaxTries = MAX_TRIES;
     MyHiddenWord = HIDDEN_WORD;
@@ -38,16 +38,29 @@ bool FBullCowGame::CheckGuessValidity(FString Guess) {
 }
 
 // receives a VALID guess, increments turn, and returns count
-BullCowCount FBullCowGame::SubmitGuess(FString) {
+FBullCowCount FBullCowGame::SubmitGuess(FString Guess) {
     // increment the turn number
     MyCurrentTry++;
     
     // setup a return variable
-    BullCowCount BullCowCount;
+    FBullCowCount BullCowCount;
     
     // loop through all letters in the guess
+    int32 HiddenWordLength = (int32) MyHiddenWord.length();
+    
+    for (int32 i = 0; i < HiddenWordLength; i++) {
         // compare letters against the hidden word
-
+        for (int32 j = 0; j < HiddenWordLength; j++) {
+            if (MyHiddenWord[i] == Guess[j]) { // if they match then
+                if (i == j) { // if they're in the same place
+                    BullCowCount.Bulls++; // increment bulls
+                } else {
+                    BullCowCount.Cows++; // must be cow
+                }
+            }
+        }
+    }
+    
     return BullCowCount;
 }
 
